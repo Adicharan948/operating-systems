@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int tracks[] = {55, 58, 60, 70, 18, 90, 150, 160, 184};
+    int n = sizeof(tracks) / sizeof(tracks[0]);
+    int head_pos = 50; // initial head position
+    int total_head_movement = 0;
+
+    printf("FCFS Disk Scheduling Algorithm\n");
+    printf("Initial Head Position: %d\n", head_pos);
+    printf("Track Sequence: ");
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tracks[i]);
+        total_head_movement += abs(head_pos - tracks[i]);
+        head_pos = tracks[i];
+    }
+
+    printf("\nTotal Head Movement: %d\n", total_head_movement);
+    printf("Average Head Movement: %.2f\n", (float)total_head_movement / n);
+
+    return 0;
+}
